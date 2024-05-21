@@ -9,6 +9,7 @@ Theory: we saw that corners are regions in the image with large variation in int
 
 
 *  Step 1: Invariant Local Features: Detect interest points
+
   ![images(1)](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/f405eefe-8a70-4ec7-84b5-fb14cb579920)
 
   
@@ -34,4 +35,26 @@ each Eign vectors has an Eign value, and the Eign value sometimes is called Lamb
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 # Harris Corner Detection Algorithm 
-* The amount of change in y coordinates is called V, and the amount of change in x coordinates is called U, and E represents the Error Function for Harris Corners like in the following figure 
+* The amount of change in y coordinates is called V, and the amount of change in x coordinates is called U, and E represents the Error Function for Harris Corners like in the following figure
+
+![R7UV0](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/e356efcd-04da-46b0-9676-531a0a06bf90)
+
+
+* The following figure, it clears how to find the corners and how to represent the shape of the corners, it is moved the window on the picture for each pixels and after that calculate the difference between the window value now and the previous window value , and from the difference between values can detect the region is it ( Corner or edge or flat region)
+
+![Screenshot 2024-05-20 190039](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/5ce1efde-1358-4b9f-935c-5bb97db9d117)
+
+* Small hint ⟶ Flat region ( it is the region that is obtained when the difference between values ( now window - previous window ) is equal = 0, and there was no effect on the coordinates
+* How to obtain the difference between the new window value and the previous window value, there are following the next steps : 
+1. Calculate the amount of change in ( X coordinate - y coordinate ) that is called partial derivative
+2. Subtract the mean of the picture from the image gradient, because I need to reduce the offset value to represent the displacement.  
+3. After that , we calculate the correlation matrix (Covariance Matrix) , because I need to obtain (eigenvectors, and eigenvalues) 
+4. After obtained (eigenvector, eigenvalues) Values, now can detect the region is it ( Corner - Edge - Flat Region ) 
+5. Finally, Put or apply a threshold on eigenvalues or use the Non-Maximum suppression method, because I need to obtain the maximum value in eigenvalues to represent or indicate the region is it contains important information or important features.
+
+![Screenshot 2024-05-20 191747](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/f4c99e75-3777-48d5-8529-e9bfb359e1d3)
+
+*Some Hints 
+1. When Compute Covariance: is it takes the amount of change from the Harris equation and applies Talyor Expansion that related to the derivative. in the Talyor expansion equation, it will be satisfied the first-order derivative only.
+2. Harris Algorithm does not affect any rotation because it depends on the eigenvalues and eigenvectors 
+3. There is two problems related to the Harris Algorithm , first The Harris Algorithm it affects when scaling is change ( zoom in or zoom out ) , not be able to detect in the status , second problem The Harris Algorithm not work with any Data Type , it works with float32 data type only .
