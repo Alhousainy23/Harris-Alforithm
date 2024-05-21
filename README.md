@@ -1,4 +1,3 @@
-https://github.com/Alhousainy23/Harris-Algorithm/blob/main/Screenshot%20(6).png?raw=true
 # Harris-Algorithm
 # Harris Corner Detectors Algorithm Article
 ** 1. The math behind Harris corner detector 
