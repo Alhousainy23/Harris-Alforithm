@@ -7,11 +7,11 @@ Theory: we saw that corners are regions in the image with large variation in int
 
 ![Screenshot (6)](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/5807cb3d-40bf-4115-8e33-646ac9c15331)
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 *  Step 1: Invariant Local Features: Detect interest points
   ![images(1)](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/f405eefe-8a70-4ec7-84b5-fb14cb579920)
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
 *  The picture is front it is  clear  the difference between two images through two images contain the same object, but the rotation is the difference between two images (right and left ) , one of     the best uses of the Harris corner detection algorithm is treated or play with the images although is the difference in brightness and rotation between them 
 * Step 2: Extract invariant descriptors 
 After detection, I need to make a description, and any photo consists of 3 types (edges - corners -flat region) 
@@ -20,4 +20,18 @@ After detection, I need to make a description, and any photo consists of 3 types
 3. The corner ⟶ is very easy to detect and matching with another image , because the corner is the amount of change in 2 directions, not one direction like edge, and based on this the corners contain a lot of features and information. 
 ![1_CCUCxtSCUdob70XMEE8Rwg](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/f91f96e9-6a7b-4fb9-b409-29528b055059)
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* They use a correlation matrix because it gives us (Eign values - Eign vectors ) 
+each Eign vectors has an Eign value, and the Eign value sometimes is called Lambda, The Corner is identified by its large variation in both the x and y directions. Mathematically we can build what so-called Hessian matrix that states the variation (derivative) in the x, y, and xy directions. Let p be a pixel in the image I hessian matrix is defined as follows: 
+* Where Ixx(p) is the second derivative of image in x direction at point p. Iyy(p) is the second derivative of image in y direction at point p.
+*  Ixy(p) is the partial derivative in x and y at point p.
+
+![Screenshot 2024-05-20 184622](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/76b195a0-f6f6-4c5d-b727-183a0b829aba)
+
+* Eigenvectors identify the direction of data variation and corresponding Eigenvalues identify the magnitude of variation in that direction. For example
+* In the following figure, we have two eigenvectors u and v. Each vector has a length corresponding to its eigenvalue. So there is a large variation in the u direction and a lower variation in the v direction.
+  ![Screenshot 2024-05-20 184849](https://github.com/Alhousainy23/Harris-Algorithm/assets/125814743/9cac0017-e8e2-45f9-a1ec-47582c34ec48)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+# Harris Corner Detection Algorithm 
+* The amount of change in y coordinates is called V, and the amount of change in x coordinates is called U, and E represents the Error Function for Harris Corners like in the following figure 
